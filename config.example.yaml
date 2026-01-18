@@ -1,0 +1,45 @@
+# SemSeg-LEM Configuration Example
+# Copy this file to config.yaml and modify according to your setup
+
+# Training settings
+training:
+  batch_size: 4
+  num_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_workers: 4
+  device: cuda  # cuda or cpu
+  seed: 42
+  save_interval: 10
+  val_interval: 1
+
+# Model settings
+model:
+  name: unet  # unet, acc_unet, brau_unet, seta_unet, swin_unet, kan_unet, etc.
+  num_classes: 2
+  in_channels: 3
+  pretrained: false
+
+# Data settings
+data:
+  image_size: [256, 256]
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  augmentation: true
+
+# Loss settings
+loss:
+  name: dice  # dice, focal, lovasz, boundary, etc.
+  weight: null  # Class weights (optional)
+
+# Optimizer settings
+optimizer:
+  name: adam  # adam, sgd, adamw
+  momentum: 0.9  # For SGD
+
+# Scheduler settings
+scheduler:
+  name: cosine  # cosine, step, plateau
+  step_size: 30  # For StepLR
+  gamma: 0.1  # For StepLR
